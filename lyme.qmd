@@ -1,0 +1,92 @@
+---
+title: "lyme"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+---
+
+## Observable JS
+
+This Quarto document is made interactive using Observable JS. Interactive documents allow readers to modify parameters and see the results immediately. Learn more about OJS interactive documents at <https://quarto.org/docs/interactive/ojs/>.
+
+## Lyme data wrangling
+
+Load the data
+
+```{r}
+if(0){ # we only need to do this once
+library(dplyr)
+library(tidyverse)
+library(stringr)
+library(readr)
+library(quarto)
+
+
+# Pull in the data
+lyme_raw = read.csv("LD-Case-Counts-by-County-00-19.csv")
+
+# Aggregate 
+lyme = lyme_raw %>% 
+    pivot_longer(cols = starts_with("Cases"), names_to = "Name", values_to = "Values") %>%
+  mutate(date = str_replace(Name, "Cases", "")) %>% 
+  group_by(Stname, date) %>% 
+  summarize(n = n(), total_cases = sum(Values)) %>%
+
+write.csv(lyme, "lyme_data.csv")
+
+# Not sure why this function doesn't work for me and I don't find any documentation
+#ojs_define(data = lyme)
+}
+```
+
+```{ojs}
+data = FileAttachment("lyme_data.csv").csv({ typed: true })
+```
+
+Filter options
+
+```{ojs}
+viewof state = Inputs.select(data.map(d => d.Stname), {multiple: true, value: "Alaska", label: "Choose a state: ", sort: true, unique: true})
+
+filtered = data.filter(function(data) {
+  return state.includes(data.Stname);
+```
+
+::: {.panel-tabset}
+
+## Plot
+
+Stacked bar chart of cases by state by year, remember to select an option above. 
+
+```{ojs}
+Plot.plot({
+  y: {
+    grid: true
+  },
+  marks: [
+    Plot.barY(filtered, {x: "date", y: "total_cases", fill: "#bab0ab"}),
+    <!-- plot.text(filtered, {x: "date", y: "total_cases", text: "Stname", textAnchor: "end", dx: -6}), -->
+    Plot.ruleY([0])
+  ]
+})
+```
+## Data
+
+Aggregated dataset for all states. 
+
+```{ojs}
+Inputs.table(data, { sort: "date", reverse: true })
+```
+
+:::
+
+## References
+
+-   https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260122
+-   https://www.hopkinslymetracker.org/
+-   https://quarto.org/docs/interactive/ojs/
+-   Data from: https://www.cdc.gov/lyme/stats/survfaq.html\
+-   Additional data options: https://data.world/datasets/lyme-disease
+-   Some plots options using observable: https://github.com/observablehq/plot and https://observablehq.com/@observablehq/plot-bar
+-   Some various tutorials: https://observablehq.com/tutorials
