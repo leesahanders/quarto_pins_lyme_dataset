@@ -14,32 +14,6 @@ This Quarto document is made interactive using Observable JS. Interactive docume
 
 Load the data
 
-```{r}
-if(0){ # we only need to do this once
-library(dplyr)
-library(tidyverse)
-library(stringr)
-library(readr)
-library(quarto)
-
-
-# Pull in the data
-lyme_raw = read.csv("LD-Case-Counts-by-County-00-19.csv")
-
-# Aggregate 
-lyme = lyme_raw %>% 
-    pivot_longer(cols = starts_with("Cases"), names_to = "Name", values_to = "Values") %>%
-  mutate(date = str_replace(Name, "Cases", "")) %>% 
-  group_by(Stname, date) %>% 
-  summarize(n = n(), total_cases = sum(Values)) %>%
-
-write.csv(lyme, "lyme_data.csv")
-
-# Not sure why this function doesn't work for me and I don't find any documentation
-#ojs_define(data = lyme)
-}
-```
-
 ```{ojs}
 data = FileAttachment("lyme_data.csv").csv({ typed: true })
 ```
@@ -51,6 +25,7 @@ viewof state = Inputs.select(data.map(d => d.Stname), {multiple: true, value: "A
 
 filtered = data.filter(function(data) {
   return state.includes(data.Stname);
+})
 ```
 
 ::: {.panel-tabset}

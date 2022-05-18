@@ -5,11 +5,11 @@ account: testadmin
 server: 3.132.233.58
 hostUrl: http://3.132.233.58/__api__
 appId: 5
-bundleId: 5
+bundleId: 6
 url: http://3.132.233.58/content/6145d93d-cdba-4e75-8355-6194ae2cd4ed/
-when: 1652892449.30925
-lastSyncTime: 1652892449.30926
+when: 1652900228.78982
+lastSyncTime: 1652900228.78983
 quarto_version: 0.9.344
-quarto_engines: knitr
+quarto_engines: markdown
 asMultiple: FALSE
 asStatic: FALSE

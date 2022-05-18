@@ -130,35 +130,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="dv">0</span>){ <span class="co"># we only need to do this once</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quarto)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull in the data</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>lyme_raw <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"LD-Case-Counts-by-County-00-19.csv"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate </span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>lyme <span class="ot">=</span> lyme_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"Cases"</span>), <span class="at">names_to =</span> <span class="st">"Name"</span>, <span class="at">values_to =</span> <span class="st">"Values"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">str_replace</span>(Name, <span class="st">"Cases"</span>, <span class="st">""</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Stname, date) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">total_cases =</span> <span class="fu">sum</span>(Values)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(lyme, <span class="st">"lyme_data.csv"</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Not sure why this function doesn't work for me and I don't find any documentation</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#ojs_define(data = lyme)</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details>
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb2" data-startfrom="44" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 43;"><span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"lyme_data.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({ <span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span> })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1" data-startfrom="18" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 17;"><span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"lyme_data.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({ <span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span> })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
@@ -170,14 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb3" data-startfrom="50" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 49;"><span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>viewof state <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Stname</span>)<span class="op">,</span> {<span class="dt">multiple</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"Alaska"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Choose a state: "</span><span class="op">,</span> <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">unique</span><span class="op">:</span> <span class="kw">true</span>})</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> data<span class="op">.</span><span class="fu">filter</span>(<span class="kw">function</span>(data) {</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> state<span class="op">.</span><span class="fu">includes</span>(data<span class="op">.</span><span class="at">Stname</span>)<span class="op">;</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;!--</span> <span class="cf">return</span> bill_length_min <span class="op">&lt;</span> penguin<span class="op">.</span><span class="at">bill_length</span> <span class="op">&amp;&amp;</span> <span class="op">--&gt;</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;!--</span>        islands<span class="op">.</span><span class="fu">includes</span>(penguin<span class="op">.</span><span class="at">island</span>)<span class="op">;</span> <span class="op">--&gt;</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-startfrom="24" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 23;"><span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>viewof state <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Stname</span>)<span class="op">,</span> {<span class="dt">multiple</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"Alaska"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Choose a state: "</span><span class="op">,</span> <span class="dt">sort</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">unique</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> data<span class="op">.</span><span class="fu">filter</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> state<span class="op">.</span><span class="fu">includes</span>(data<span class="op">.</span><span class="at">Stname</span>)<span class="op">;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -198,20 +167,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>Stacked bar chart of cases by state by year, remember to select an option above</p>
+<p>Stacked bar chart of cases by state by year, remember to select an option above.</p>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb4" data-startfrom="73" data-source-offset="-144"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 72;"><span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barY</span>(filtered<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"total_cases"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#bab0ab"</span>})<span class="op">,</span></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;!--</span> plot<span class="op">.</span><span class="fu">text</span>(filtered<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"total_cases"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"Stname"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"end"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="op">-</span><span class="dv">6</span>})<span class="op">,</span> <span class="op">--&gt;</span></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-startfrom="38" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 37;"><span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barY</span>(filtered<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"total_cases"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#bab0ab"</span>})<span class="op">,</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;!--</span> plot<span class="op">.</span><span class="fu">text</span>(filtered<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"total_cases"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"Stname"</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"end"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="op">-</span><span class="dv">6</span>})<span class="op">,</span> <span class="op">--&gt;</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
@@ -221,11 +190,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>Without any filters</p>
+<p>Aggregated dataset for all states.</p>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb5" data-startfrom="103" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 102;"><span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(data<span class="op">,</span> { <span class="dt">sort</span><span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-startfrom="54" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 53;"><span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(data<span class="op">,</span> { <span class="dt">sort</span><span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
@@ -254,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </main>
 <!-- /main column -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"data = FileAttachment(\"lyme_data.csv\").csv({ typed: true })\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof state = Inputs.select(data.map(d => d.Stname), {multiple: true, value: \"Alaska\", label: \"Choose a state: \", sort: true, unique: true})\n\nfiltered = data.filter(function(data) {\n  return state.includes(data.Stname);\n  \n  <!-- return bill_length_min < penguin.bill_length && -->\n  <!--        islands.includes(penguin.island); -->\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"<!-- Plot.plot({ -->\n<!--   marks: [ -->\n<!--     Plot.barY(data, {x: \"date\", y: \"total_cases\", fill: \"#bab0ab\"}) -->\n<!--   ] -->\n<!-- }) -->\n\nPlot.plot({\n  y: {\n    grid: true\n  },\n  marks: [\n    Plot.barY(filtered, {x: \"date\", y: \"total_cases\", fill: \"#bab0ab\"}),\n    <!-- plot.text(filtered, {x: \"date\", y: \"total_cases\", text: \"Stname\", textAnchor: \"end\", dx: -6}), -->\n    Plot.ruleY([0])\n  ]\n})\n\n<!-- Plot.plot({ -->\n<!--   y: { -->\n<!--     grid: true -->\n<!--   }, -->\n<!--   marks: [ -->\n<!--     Plot.barY(data, {x: \"date\", y: \"total_cases\", fill: \"#bab0ab\"}), -->\n<!--     <!-- plot.text(data, {x: \"date\", y: \"total_cases\", text: \"Stname\", textAnchor: \"end\", dx: -6}), --> -->\n<!--     Plot.ruleY([0]) -->\n<!--   ] -->\n<!-- }) -->\n\n\n<!-- Other fill options: \"steelblue\"  -->\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"Inputs.table(data, { sort: \"date\", reverse: true })\n"},{"methodName":"interpretQuiet","source":"shinyInput('state')"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"data = FileAttachment(\"lyme_data.csv\").csv({ typed: true })\r\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof state = Inputs.select(data.map(d => d.Stname), {multiple: true, value: \"Alaska\", label: \"Choose a state: \", sort: true, unique: true})\r\n\r\nfiltered = data.filter(function(data) {\r\n  return state.includes(data.Stname);\r\n})\r\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"Plot.plot({\r\n  y: {\r\n    grid: true\r\n  },\r\n  marks: [\r\n    Plot.barY(filtered, {x: \"date\", y: \"total_cases\", fill: \"#bab0ab\"}),\r\n    <!-- plot.text(filtered, {x: \"date\", y: \"total_cases\", text: \"Stname\", textAnchor: \"end\", dx: -6}), -->\r\n    Plot.ruleY([0])\r\n  ]\r\n})\r\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"Inputs.table(data, { sort: \"date\", reverse: true })\r\n"},{"methodName":"interpretQuiet","source":"shinyInput('state')"}]}
 </script>
 <script type="module">
 window._ojs.paths.runtimeToDoc = "..\..\..";
